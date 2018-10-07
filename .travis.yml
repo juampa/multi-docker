@@ -1,10 +1,12 @@
 sudo: required
-# services:
-#   - docker
-# before_install:
-#   - docker build -t alexgriff/react-test ./client
-# scripts:
-#   - docker run alexgriff/react-test npm test -- --coverage
+services:
+  - docker
+
+before_install:
+  - docker build -t alexgriff/react-test -f ./client/Dockerfile ./client
+
+scripts:
+  - docker run alexgriff/react-test npm test -- --coverage
 # after_success:
 #   - docker build -t alexgriff/multi-client -f ./client/Dockerfile.prod ./client
 #   - docker build -t alexgriff/multi-server -f ./server/Dockerfile.prod ./server
