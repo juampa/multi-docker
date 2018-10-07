@@ -6,7 +6,7 @@ before_install:
   - echo "******before******"
   # - docker build -t alexgriff/react-test -f ./client/Dockerfile ./client
 
-scripts:
+script:
   - echo "******scripts******"
   # - docker run alexgriff/react-test npm test -- --coverage
 # after_success:
