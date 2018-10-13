@@ -25,7 +25,7 @@ deploy:
   region: us-east-2
   app: udemy-fib
   env: UdemyFib-env
-  bucket: elasticbeanstalk-us-east-2-370725029584
+  bucket_name: elasticbeanstalk-us-east-2-370725029584
   bucket_path: udemy-fib
   on:
     branch: master
