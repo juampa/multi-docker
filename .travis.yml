@@ -20,3 +20,15 @@ after_success:
   - docker push alexgriff/multi-server
   - docker push alexgriff/multi-nginx
   - docker push alexgriff/multi-worker
+deploy:
+  provider: elasticbeanstalk
+  region: us-east-2
+  app: udemy-fib
+  env: UdemyFib-env
+  bucket: elasticbeanstalk-us-east-2-370725029584
+  bucket_path: udemy-fib
+  on:
+    branch: master
+  access_key_id: $AWS_ACCESS_KEY
+  secret_access_key:
+    secure: $AWS_SECRET_KEY

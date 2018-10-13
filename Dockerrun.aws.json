@@ -1,0 +1,36 @@
+{
+  "AWSEBDockerrunVersion": 2,
+  "containerDefinitions": [
+    {
+      "name": "client",
+      "image": "alexgriff/multi-client",
+      "hostname": "client",
+      "essential": false
+    },
+    {
+      "name": "worker",
+      "image": "alexgriff/multi-worker",
+      "hostname": "worker",
+      "essential": false
+    },
+    {
+      "name": "server",
+      "image": "alexgriff/multi-server",
+      "hostname": "api",
+      "essential": false
+    },
+    {
+      "name": "nginx",
+      "image": "alexgriff/multi-nginx",
+      "hostname": "nginx",
+      "essential": true,
+      "portMappings": [
+        {
+          "hostPort": 80,
+          "containerPort": 80
+        }
+      ],
+      "links": ["client", "server"]
+    }
+  ]
+}
