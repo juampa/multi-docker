@@ -3,23 +3,23 @@ services:
   - docker
 
 before_install:
-  - docker build -t alexgriff/react-test -f ./client/Dockerfile ./client
+  - docker build -t jpmora/react-test -f ./client/Dockerfile ./client
 
 script:
-  - docker run alexgriff/react-test npm test -- --coverage
+  - docker run jpmora/react-test npm test -- --coverage
 
 after_success:
-  - docker build -t alexgriff/multi-client -f ./client/Dockerfile.prod ./client
-  - docker build -t alexgriff/multi-server -f ./server/Dockerfile.prod ./server
-  - docker build -t alexgriff/multi-nginx -f ./nginx/Dockerfile.prod ./nginx
-  - docker build -t alexgriff/multi-worker -f ./worker/Dockerfile.prod ./worker
+  - docker build -t jpmora/multi-client -f ./client/Dockerfile.prod ./client
+  - docker build -t jpmora/multi-server -f ./server/Dockerfile.prod ./server
+  - docker build -t jpmora/multi-nginx -f ./nginx/Dockerfile.prod ./nginx
+  - docker build -t jpmora/multi-worker -f ./worker/Dockerfile.prod ./worker
   # log in to docker cli
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
   # take images and push to docker hub
-  - docker push alexgriff/multi-client
-  - docker push alexgriff/multi-server
-  - docker push alexgriff/multi-nginx
-  - docker push alexgriff/multi-worker
+  - docker push jpmora/multi-client
+  - docker push jpmora/multi-server
+  - docker push jpmora/multi-nginx
+  - docker push jpmora/multi-worker
 deploy:
   provider: elasticbeanstalk
   region: us-east-2
